@@ -1,0 +1,3 @@
+DATABASE_URL=postgresql://postgres:[Ertyu1234&&%%]@db.kgnyribjreqqaowelexx.supabase.co:5432/postgres
+NODE_ENV=production
+PORT=3001
