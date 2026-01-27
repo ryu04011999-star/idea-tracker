@@ -1,0 +1,88 @@
+.idea-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.idea-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-secondary);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  transition: var(--transition-normal);
+  border: 1px solid transparent;
+}
+
+.idea-item:hover {
+  transform: translateX(8px);
+  background-color: var(--bg-tertiary);
+  border-color: var(--bg-glass);
+}
+
+.idea-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--accent-primary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-normal);
+  color: white;
+  font-size: 0.8rem;
+}
+
+.checkbox.checked {
+  background: var(--gradient-accent);
+  border-color: transparent;
+}
+
+.idea-title {
+  font-size: 1.05rem;
+  transition: var(--transition-normal);
+}
+
+.idea-item.completed .idea-title {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  opacity: 0;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.idea-item:hover .delete-btn {
+  opacity: 0.7;
+}
+
+.delete-btn:hover {
+  opacity: 1 !important;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.no-ideas {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  border: 2px dashed var(--bg-tertiary);
+}

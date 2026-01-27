@@ -1,0 +1,40 @@
+.idea-input-form {
+  display: flex;
+  gap: 0.75rem;
+  background-color: var(--bg-secondary);
+  padding: 0.75rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--bg-tertiary);
+  margin-bottom: 1.5rem;
+}
+
+.idea-input-form input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.idea-input-form button {
+  background: var(--gradient-accent);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.idea-input-form button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.idea-input-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
