@@ -2,13 +2,16 @@ import React from 'react';
 import './IdeaList.css';
 
 const IdeaList = ({ ideas, onToggleComplete, onDeleteIdea }) => {
-  if (ideas.length === 0) {
-    return <div className="no-ideas">まだ録されたアイデアはありません。</div>;
+  // 配列でない場合は空配列として扱う（エラー回避）
+  const safeIdeas = Array.isArray(ideas) ? ideas : [];
+
+  if (safeIdeas.length === 0) {
+    return <div className="no-ideas">まだ登録されたアイデアはありません。</div>;
   }
 
   return (
     <div className="idea-list">
-      {ideas.map((idea) => (
+      {safeIdeas.map((idea) => (
         <div key={idea.id} className={`idea-item ${idea.completed ? 'completed' : ''}`}>
           <div className="idea-content" onClick={() => onToggleComplete(idea.id, idea.completed)}>
             <div className={`checkbox ${idea.completed ? 'checked' : ''}`}>

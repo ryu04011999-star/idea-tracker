@@ -4,15 +4,25 @@ import IdeaList from './components/IdeaList';
 
 const App = () => {
   const [ideas, setIdeas] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const fetchIdeas = async () => {
     try {
       const response = await fetch('/api/ideas');
       const data = await response.json();
-      setIdeas(data);
+      
+      if (!response.ok) {
+        throw new Error(data.error || data.details || 'データ取得エラー');
+      }
+      
+      if (Array.isArray(data)) {
+        setIdeas(data);
+      } else {
+        throw new Error('データの形式が正しくありません');
+      }
     } catch (error) {
       console.error('Failed to fetch ideas:', error);
+      setError(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -79,6 +89,12 @@ const App = () => {
 
       <main>
         <IdeaInput onAddIdea={handleAddIdea} onDeleteAll={handleDeleteAll} />
+        {error && (
+          <div style={{ color: '#ef4444', background: 'rgba(239, 68, 68, 0.1)', padding: '1rem', borderRadius: '8px', textAlign: 'center', marginBottom: '1rem' }}>
+            <p><strong>エラーが発生しました:</strong></p>
+            <p>{error}</p>
+          </div>
+        )}
         {isLoading ? (
           <div className="loader">読み込み中...</div>
         ) : (

@@ -12,7 +12,10 @@ router.get('/', async (req, res) => {
     res.json(result.rows);
   } catch (error) {
     console.error('アイデア取得エラー:', error);
-    res.status(500).json({ error: 'アイデアの取得に失敗しました' });
+    res.status(500).json({ 
+      error: 'アイデアの取得に失敗しました',
+      details: error.message 
+    });
   }
 });
 
