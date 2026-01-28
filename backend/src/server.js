@@ -13,8 +13,8 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-// データベース初期化
-await initializeDatabase();
+// データベース初期化（非同期で実行し、サーバー起動をブロックしない）
+initializeDatabase().catch(err => console.error('DB初期化エラー:', err));
 
 // ルート
 app.use('/api/ideas', ideasRouter);

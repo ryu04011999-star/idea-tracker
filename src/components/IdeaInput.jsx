@@ -28,7 +28,9 @@ const IdeaInput = ({ onAddIdea, onDeleteAll }) => {
       setTitle('');
     } catch (error) {
       console.error('Failed to add idea:', error);
-      setError('追加できませんでした。再接続を確認してください。');
+      // デバッグ用: エラー内容をポップアップで表示
+      alert(`エラーが発生しました:\n${error.message}`);
+      setError('追加できませんでした。詳細はアラートを確認してください。');
     } finally {
       setIsLoading(false);
     }
