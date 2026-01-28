@@ -56,6 +56,20 @@ const App = () => {
     }
   };
 
+  // すべてのアイデアを削除
+  const handleDeleteAll = async () => {
+    try {
+      const response = await fetch('/api/ideas', {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setIdeas([]);
+      }
+    } catch (error) {
+      console.error('Failed to delete all ideas:', error);
+    }
+  };
+
   return (
     <div className="container">
       <header>
@@ -64,7 +78,7 @@ const App = () => {
       </header>
 
       <main>
-        <IdeaInput onAddIdea={handleAddIdea} />
+        <IdeaInput onAddIdea={handleAddIdea} onDeleteAll={handleDeleteAll} />
         {isLoading ? (
           <div className="loader">読み込み中...</div>
         ) : (

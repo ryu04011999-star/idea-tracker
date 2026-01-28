@@ -79,4 +79,15 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// すべてのアイデアを削除
+router.delete('/', async (req, res) => {
+  try {
+    await pool.query('DELETE FROM ideas');
+    res.json({ message: 'すべてのアイデアを削除しました' });
+  } catch (error) {
+    console.error('全削除エラー:', error);
+    res.status(500).json({ error: '全削除に失敗しました' });
+  }
+});
+
 export default router;

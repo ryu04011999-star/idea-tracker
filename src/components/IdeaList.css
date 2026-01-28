@@ -8,81 +8,98 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--bg-secondary);
-  padding: 1rem 1.25rem;
-  border-radius: var(--radius-md);
-  transition: var(--transition-normal);
-  border: 1px solid transparent;
+  background-color: var(--bg-glass);
+  backdrop-filter: blur(8px);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-lg);
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
 }
 
 .idea-item:hover {
-  transform: translateX(8px);
-  background-color: var(--bg-tertiary);
-  border-color: var(--bg-glass);
+  transform: translateY(-2px);
+  background-color: var(--bg-glass-hover);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: var(--shadow-lg);
 }
 
 .idea-content {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
   flex: 1;
   cursor: pointer;
+  z-index: 1;
 }
 
 .checkbox {
-  width: 24px;
-  height: 24px;
-  border: 2px solid var(--accent-primary);
-  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--text-muted);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--transition-normal);
+  transition: all 0.3s ease;
   color: white;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.idea-item:hover .checkbox {
+  border-color: var(--accent-primary);
 }
 
 .checkbox.checked {
-  background: var(--gradient-accent);
+  background: var(--gradient-main);
   border-color: transparent;
+  transform: scale(1.1);
 }
 
 .idea-title {
-  font-size: 1.05rem;
-  transition: var(--transition-normal);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .idea-item.completed .idea-title {
+  color: var(--text-muted);
   text-decoration: line-through;
-  color: var(--text-secondary);
-  opacity: 0.6;
+  text-decoration-color: var(--accent-primary);
+  text-decoration-thickness: 2px;
 }
 
 .delete-btn {
   background: transparent;
   border: none;
-  color: #ef4444;
-  opacity: 0;
+  color: var(--text-muted);
   cursor: pointer;
-  transition: var(--transition-normal);
-  padding: 0.5rem;
+  transition: all 0.2s ease;
+  padding: 0.6rem;
   border-radius: 50%;
-}
-
-.idea-item:hover .delete-btn {
-  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1; /* 修正: 常に表示する（モバイル対応） */
 }
 
 .delete-btn:hover {
-  opacity: 1 !important;
+  color: var(--accent-danger);
   background-color: rgba(239, 68, 68, 0.1);
+  transform: rotate(90deg);
 }
 
 .no-ideas {
   text-align: center;
-  padding: 3rem;
-  background-color: var(--bg-secondary);
+  padding: 4rem 2rem;
+  background-color: var(--bg-glass);
   border-radius: var(--radius-lg);
   color: var(--text-secondary);
-  border: 2px dashed var(--bg-tertiary);
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  font-size: 1.1rem;
 }
