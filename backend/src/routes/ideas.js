@@ -35,7 +35,10 @@ router.post('/', async (req, res) => {
     res.status(201).json(result.rows[0]);
   } catch (error) {
     console.error('アイデア作成エラー:', error);
-    res.status(500).json({ error: 'アイデアの作成に失敗しました' });
+    res.status(500).json({ 
+      error: 'アイデアの作成に失敗しました',
+      details: error.message 
+    });
   }
 });
 
