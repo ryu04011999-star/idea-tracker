@@ -18,9 +18,9 @@ const IdeaInput = ({ onAddIdea, onDeleteAll }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title }),
       });
-      
       if (!response.ok) {
-        throw new Error('追加に失敗しました');
+        const errorText = await response.text();
+        throw new Error(`Server Error (${response.status}): ${errorText}`);
       }
 
       const newIdea = await response.json();
