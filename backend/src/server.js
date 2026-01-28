@@ -30,9 +30,12 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'サーバーエラーが発生しました' });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 サーバーがポート ${PORT} で起動しました`);
-  console.log(`📡 API: http://localhost:${PORT}/api`);
-});
+// ローカル開発時のみサーバーを起動（Vercelではエクスポートされたappを使用）
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`🚀 サーバーがポート ${PORT} で起動しました`);
+    console.log(`📡 API: http://localhost:${PORT}/api`);
+  });
+}
 
 export default app;
