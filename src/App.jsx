@@ -4,6 +4,7 @@ import IdeaList from './components/IdeaList';
 
 const App = () => {
   const [ideas, setIdeas] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const fetchIdeas = async () => {
