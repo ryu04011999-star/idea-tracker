@@ -4,10 +4,6 @@
     {
       "src": "/api/(.*)",
       "dest": "/backend/src/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
     }
   ]
 }
